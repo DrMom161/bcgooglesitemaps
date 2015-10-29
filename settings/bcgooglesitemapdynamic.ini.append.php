@@ -11,6 +11,9 @@ ClassFilterArray[]=folder
 ClassFilterArray[]=article
 ClassFilterArray[]=frontpage
 
+#setting array visibility child nodes of classes in sitemap
+ClassFilterChildrenHideArray[]
+#ClassFilterChildrenHideArray[folder]=hide
 
 [NodeSettings]
 #set true to include only main node of content object in sitemap
