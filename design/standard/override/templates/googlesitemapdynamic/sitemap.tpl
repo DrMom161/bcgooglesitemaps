@@ -29,7 +29,8 @@
      $diff_last_modified=sub( $cur_timestamp, $node.object.modified )
      $request_uri='REQUEST_URI'|getenv
      $http_host='HTTP_HOST'|getenv
-     $request_uri_list=$request_uri|explode( 'layout' )}
+     $request_uri_list=$request_uri|explode( 'layout' )
+     $class_filter_children_visibility=ezini( 'Classes', 'ClassFilterChildrenVisibilityArray', 'bcgooglesitemapdynamic.ini' )}
 {if not( is_set( $sitemap_siteurl ) )}
     {def $sitemap_siteurl=concat( $http_host, $request_uri_list[0] )}
 {/if}
@@ -227,7 +228,11 @@
     {if not( is_set( $cur_subtree_priority_modified ) )}
         {def $cur_subtree_priority_modified=null}
     {/if}
-
+    
+    {if is_set($class_filter_children_visibility[$node.node_id])}
+        {def $cur_subtree_visibility=$class_filter_children_visibility[$node.node_id]}
+    {/if}
+  
     {if not( is_set( $cur_subtree_visibility ) )}
         {def $cur_subtree_visibility=null}
     {/if}
